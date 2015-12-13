@@ -32,7 +32,7 @@ public class DiscoverMovieDBApi extends Moviedbapi {
         int i = 0;
         int pageNumber = 1;
         ArrayList<DiscoverMovieJson> movieList = new ArrayList<>();
-        while ( i < n) {
+        while ( i < n ) {
             DiscoverResponse r = discoverByPagination(pageNumber, "vote_average.desc");
             i += r.getTotal_results();
             movieList.addAll(r.getResults());

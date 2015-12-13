@@ -33,14 +33,14 @@ public class ImagePagerAdapter extends RecyclingPagerAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup container) {
-        Log.i("Image adapter", "Loadng view at position" + position);
+        Log.i("Image imageAdapter", "Loadng view at position" + position);
         ImageView view = (ImageView) convertView;
         if (view == null) {
             view = (ImageView) LayoutInflater.from(mContext).inflate(mResource, container, false);
         }
 
         String movie = imageUris.get(position);
-        Log.i("Image adapter", "With url" + movie);
+        Log.i("Image imageAdapter", "With url" + movie);
         Picasso.with(mContext).load(movie).into(view);
         return view;
     }

@@ -54,19 +54,26 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines = "10"
-        android:scrollbars = "vertical"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/movie_description" />
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/movie_description" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play Trailer"
-        android:id="@+id/trailer_button" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Play Trailer"
+                android:id="@+id/trailer_button" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

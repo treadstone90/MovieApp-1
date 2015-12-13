@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -52,8 +54,8 @@ public class MovieDetailActivityFragment extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        detailApi = new MovieDetailApi("11111");
-        imageApi = new MovieImageApi("111111");
+        detailApi = new MovieDetailApi("0000000");
+        imageApi = new MovieImageApi("0000000");
         super.onCreate(savedInstanceState);
     }
 
@@ -81,7 +83,10 @@ public class MovieDetailActivityFragment extends Fragment {
                 movieUri.toString(), null, new MovieDetailListener(), new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                if(error instanceof NoConnectionError) {
+                    Toast.makeText(getContext(), "Unable to connect to server",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -89,7 +94,10 @@ public class MovieDetailActivityFragment extends Fragment {
                 imageUri.toString(), null, new MovieImageListener(mPagerAdapter), new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                if(error instanceof NoConnectionError) {
+                    Toast.makeText(getContext(), "Unable to connect to server",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -132,7 +140,6 @@ public class MovieDetailActivityFragment extends Fragment {
         @Override
         public void onResponse(JSONObject response) {
             MovieJson j = MovieApiHelper.fromJsonRepsponse(response.toString());
-            Log.i("Movie completion", j.toString());
             onMovieDetailCompletion(j);
         }
     }

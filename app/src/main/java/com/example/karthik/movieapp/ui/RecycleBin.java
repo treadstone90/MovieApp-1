@@ -11,7 +11,7 @@ import android.view.View;
  * storage: ActiveViews and ScrapViews. ActiveViews are those views which were onscreen at the
  * start of a layout. By construction, they are displaying current information. At the end of
  * layout, all views in ActiveViews are demoted to ScrapViews. ScrapViews are old views that
- * could potentially be used by the adapter to avoid allocating views unnecessarily.
+ * could potentially be used by the imageAdapter to avoid allocating views unnecessarily.
  * <p>
  * This class was taken from Android's implementation of {@link android.widget.AbsListView} which
  * is copyrighted 2006 The Android Open Source Project.
@@ -26,7 +26,7 @@ public class RecycleBin {
     private View[] activeViews = new View[0];
     private int[] activeViewTypes = new int[0];
 
-    /** Unsorted views that can be used by the adapter as a convert view. */
+    /** Unsorted views that can be used by the imageAdapter as a convert view. */
     private SparseArray<View>[] scrapViews;
 
     private int viewTypeCount;
@@ -114,7 +114,7 @@ public class RecycleBin {
 
     /**
      * Makes sure that the size of scrapViews does not exceed the size of activeViews.
-     * (This can happen if an adapter does not recycle its views).
+     * (This can happen if an imageAdapter does not recycle its views).
      */
     private void pruneScrapViews() {
         final int maxViews = activeViews.length;

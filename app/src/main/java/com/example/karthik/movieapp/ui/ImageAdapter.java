@@ -29,14 +29,14 @@ public class ImageAdapter extends ArrayAdapter<DiscoverMovieJson> {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        Log.i("Image adapter", "Loadng view at position" + position);
+        Log.i("Image imageAdapter", "Loadng view at position" + position);
         ImageView view = (ImageView) convertView;
         if (view == null) {
             view = (ImageView) LayoutInflater.from(mContext).inflate(mResource, parent, false);
         }
 
         DiscoverMovieJson movie = getItem(position);
-        Log.i("Image adapter", "With url" + movie.getPoster_path());
+        Log.i("Image imageAdapter", "With url" + movie.getPoster_path());
         Picasso.with(mContext).load(movie.getPoster_path()).into(view);
         return view;
     }
